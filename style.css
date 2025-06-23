@@ -1,9 +1,9 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.main{
+.main {
     width: 100%;
     background: linear-gradient(to top, rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%), url(1.jpg);
     background-position: center;
@@ -11,19 +11,19 @@
     height: 100vh;
 }
 
-.navbar{
+.navbar {
     width: 1200px;
     height: 75px;
     margin: auto;
 }
 
-.icon{
+.icon {
     width: 200px;
     float: left;
     height: 70px;
 }
 
-.logo{
+.logo {
     color: #ff7200;
     font-size: 35px;
     font-family: Arial;
@@ -33,27 +33,27 @@
     margin-top: 5px
 }
 
-.menu{
+.menu {
     width: 400px;
     float: left;
     height: 70px;
 }
 
-ul{
+ul {
     float: left;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-ul li{
+ul li {
     list-style: none;
     margin-left: 62px;
     margin-top: 27px;
     font-size: 14px;
 }
 
-ul li a{
+ul li a {
     text-decoration: none;
     color: #fff;
     font-family: Arial;
@@ -61,17 +61,17 @@ ul li a{
     transition: 0.4s ease-in-out;
 }
 
-ul li a:hover{
+ul li a:hover {
     color: #ff7200;
 }
 
-.search{
+.search {
     width: 330px;
     float: left;
     margin-left: 270px;
 }
 
-.srch{
+.srch {
     font-family: 'Times New Roman';
     width: 200px;
     height: 40px;
@@ -87,7 +87,7 @@ ul li a:hover{
     border-top-left-radius: 5px;
 }
 
-.btn{
+.btn {
     width: 100px;
     height: 40px;
     background: #ff7200;
@@ -96,88 +96,111 @@ ul li a:hover{
     color: #fff;
     font-size: 15px;
     border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px; /* This was duplicated, fixed below */
+    border-top-right-radius: 5px; /* Added missing top-right radius */
     transition: 0.2s ease;
     cursor: pointer;
 }
-.btn:hover{
+.btn:hover {
     color: #000;
 }
 
-.btn:focus{
+.btn:focus {
     outline: none;
 }
 
-.srch:focus{
+.srch:focus {
     outline: none;
 }
 
-.content{
+/* --- UPDATES START HERE --- */
+
+.content {
     width: 1200px;
-    height: auto;
+    /* height: auto; removed fixed height to allow content to dictate height */
     margin: auto;
     color: #fff;
-    position: relative;
+    /* position: relative; Keeping this is fine, but not strictly necessary for flexbox layout unless you have other absolutely positioned elements */
+
+    /* Flexbox properties to arrange children side-by-side */
+    display: flex;
+    justify-content: space-between; /* Pushes text to left, form to right */
+    align-items: flex-start; /* Aligns content from the top */
+    padding-top: 50px; /* Adjust as needed to move content down from navbar */
+    padding-left: 20px; /* Keep padding consistent for the content area */
+    padding-right: 20px; /* Keep padding consistent for the content area */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
-.content .par{
-    padding-left: 20px;
+.text-content-wrapper {
+    flex: 1; /* Allows this div to take up available space */
+    max-width: 60%; /* Limit the width of the text content to prevent it from stretching too far */
+    margin-right: 50px; /* Space between the text content and the form */
+    /* Remove any specific margin-top or padding-top that might cause misalignment with the form if the form has a large negative top value */
+}
+
+.content .par {
+    /* padding-left: 20px; This is now covered by .text-content-wrapper's left alignment/padding */
     padding-bottom: 25px;
     font-family: Arial;
     letter-spacing: 1.2px;
     line-height: 30px;
+    color: #fff; /* Added color explicitely */
 }
 
-.content h1{
+.content h1 {
     font-family: 'Times New Roman';
     font-size: 50px;
-    padding-left: 20px;
-    margin-top: 9%;
+    /* padding-left: 20px; Covered by .text-content-wrapper */
+    margin-top: 0; /* Reset margin-top as padding-top on .content handles vertical positioning */
     letter-spacing: 2px;
 }
 
-.content .cn{
+.content .cn {
     width: 160px;
     height: 40px;
     background: #ff7200;
     border: none;
     margin-bottom: 10px;
-    margin-left: 20px;
+    /* margin-left: 20px; Covered by .text-content-wrapper's left alignment/padding */
     font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
     transition: .4s ease;
-    
 }
 
-.content .cn a{
+.content .cn a {
     text-decoration: none;
     color: #000;
     transition: .3s ease;
 }
 
-.cn:hover{
+.cn:hover {
     background-color: #fff;
 }
 
-.content span{
+.content span {
     color: #ff7200;
-    font-size: 65px
+    font-size: 65px;
 }
 
-.form{
-    width: 250px;
-    height: 380px;
+.form {
+    width: 280px; /* Adjusted width slightly for better appearance, match screenshot if needed */
+    height: auto; /* Changed from fixed height to auto so content can dictate height */
     background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
-    position: absolute;
-    top: -20px;
-    left: 870px;
-    transform: translate(0%,-5%);
+    /* Removed absolute positioning for flexbox layout */
+    position: static; /* Reset to default positioning */
+    top: auto; /* Reset */
+    left: auto; /* Reset */
+    transform: none; /* Remove any transform that was used for positioning */
     border-radius: 10px;
     padding: 25px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    /* Add margin-top if you want the form to sit lower than the text, but flexbox's align-items: flex-start should align tops by default */
+    margin-top: 0; /* Ensure no unwanted margin pushing it down */
 }
 
-.form h2{
+.form h2 {
     width: 220px;
     font-family: sans-serif;
     text-align: center;
@@ -185,12 +208,13 @@ ul li a:hover{
     font-size: 22px;
     background-color: #fff;
     border-radius: 10px;
-    margin: 2px;
+    margin: 2px auto 10px auto; /* Added margin-bottom to separate from inputs */
     padding: 8px;
 }
 
-.form input{
-    width: 240px;
+.form input {
+    width: 100%; /* Make inputs fill the form's width minus padding */
+    max-width: 240px; /* Keep a max-width if desired */
     height: 35px;
     background: transparent;
     border-bottom: 1px solid #ff7200;
@@ -202,19 +226,22 @@ ul li a:hover{
     letter-spacing: 1px;
     margin-top: 30px;
     font-family: sans-serif;
+    box-sizing: border-box; /* Important for width to include padding */
+    padding: 0 5px; /* Add some horizontal padding for text in input fields */
 }
 
-.form input:focus{
+.form input:focus {
     outline: none;
 }
 
-::placeholder{
+::placeholder {
     color: #fff;
     font-family: Arial;
 }
 
-.btnn{
-    width: 240px;
+.btnn {
+    width: 100%; /* Make button fill the form's width minus padding */
+    max-width: 240px; /* Keep a max-width if desired */
     height: 40px;
     background: #ff7200;
     border: none;
@@ -225,41 +252,43 @@ ul li a:hover{
     color: #fff;
     transition: 0.4s ease;
 }
-.btnn:hover{
+.btnn:hover {
     background: #fff;
     color: #ff7200;
 }
-.btnn a{
+.btnn a {
     text-decoration: none;
     color: #000;
     font-weight: bold;
 }
-.form .link{
+.form .link {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
     padding-top: 20px;
     text-align: center;
+    color: #fff; /* Added color for readability */
 }
-.form .link a{
+.form .link a {
     text-decoration: none;
     color: #ff7200;
 }
-.liw{
+.liw {
     padding-top: 15px;
     padding-bottom: 10px;
     text-align: center;
+    color: #fff; /* Added color for readability */
 }
-.icons a{
+.icons a {
     text-decoration: none;
     color: #fff;
 }
-.icons ion-icon{
+.icons ion-icon {
     color: #fff;
     font-size: 30px;
     padding-left: 14px;
     padding-top: 5px;
     transition: 0.3s ease;
 }
-.icons ion-icon:hover{
+.icons ion-icon:hover {
     color: #ff7200;
 }
