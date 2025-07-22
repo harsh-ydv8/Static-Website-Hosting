@@ -24,24 +24,6 @@ The primary objective was to provision AWS infrastructure and host a static HTML
 
 ---
 
-## 📦 Repository Structure
-
-Static-Website-Hosting/
-├── website/
-│ ├── index.html
-│ └── styles.css 
-├── infra/
-│ ├── main.tf
-│ └── iam.tf 
-├── .gitignore
-├── LICENSE
-└── README.md
-
-markdown
-Copy
-Edit
-
----
 
 ## ⚙️ Implementation Details
 
